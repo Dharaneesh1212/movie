@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import movieRoute from "./routes/movieRoute.js";
+import userRouter from "./routes/userRoute.js";
 
 dotenv.config();
 
@@ -14,3 +15,4 @@ app.listen(PORT, () => {
 });
 
 app.use("/api/movie", movieRoute);
+app.use("/api/user",userRouter)

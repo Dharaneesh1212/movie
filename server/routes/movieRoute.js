@@ -20,12 +20,6 @@ router.get("/watched", (req, res) => {
   console.log("watched");
 });
 
-router.get("/auth", (req, res) => {
-  res.send("Running authentication successfully");
-  res.status(200);
-  console.log("authentication");
-});
-
 router.get("/popular", (req, res) => {
   res.send("Running popular successfully");
   res.status(200);
