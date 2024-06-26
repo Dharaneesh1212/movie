@@ -1,49 +1,47 @@
-const express = require("express");
+import express from "express";
 
-const app = express();
+const router = express.Router();
 
-app.get("/", (req, res) => {
+router.get("/", (req, res) => {
   res.send("Running home successfully");
   res.status(200);
   console.log("home");
 });
 
-app.get("/wishlist", (req, res) => {
+router.get("/wishlist", (req, res) => {
   res.send("Running wishlist successfully");
   res.status(200);
   console.log("wishlist");
 });
 
-app.get("/watched", (req, res) => {
+router.get("/watched", (req, res) => {
   res.send("Running watched successfully");
   res.status(200);
   console.log("watched");
 });
 
-app.get("/auth", (req, res) => {
+router.get("/auth", (req, res) => {
   res.send("Running authentication successfully");
   res.status(200);
   console.log("authentication");
 });
 
-app.get("/popular", (req, res) => {
+router.get("/popular", (req, res) => {
   res.send("Running popular successfully");
   res.status(200);
   console.log("popular");
 });
 
-app.get("/trending", (req, res) => {
+router.get("/trending", (req, res) => {
   res.send("Running trending successfully");
   res.status(200);
   console.log("trending");
 });
 
-app.get("/search", (req, res) => {
+router.get("/search", (req, res) => {
   res.send("Running search successfully");
   res.status(200);
   console.log("search");
 });
 
-app.listen(8000, () => {
-  console.log("server is running successfully");
-});
+export default router
