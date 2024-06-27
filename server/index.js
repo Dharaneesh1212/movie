@@ -1,6 +1,5 @@
 import express from "express";
 import dotenv from "dotenv";
-import movieRoute from "./routes/movieRoute.js";
 import userRouter from "./routes/userRoute.js";
 import mongoose from "mongoose";
 
@@ -10,7 +9,6 @@ const PORT = process.env.PORT || 8000;
 const CONNECTION_URL = process.env.CONNECTION_URL;
 const app = express();
 
-app.use("/api/movie", movieRoute);
 app.use("/api/user", userRouter);
 
 // connections
