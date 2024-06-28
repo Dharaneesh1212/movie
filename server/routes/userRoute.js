@@ -1,16 +1,30 @@
 import express from "express";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import USER from "../models/userModel.js";
 
 const userRouter = express.Router();
 
 // signup
-// signin
-// forgot pswrd
-// reset pswrd
+userRouter.post("/signup", async (req, res) => {
+  const { username, email, password } = req.body;
+  const user = await USER.findOne({ email });
+  if (user) {
+    return res.json({ message: "user already exist" });
+  }
 
-userRouter.get("/auth", (req, res) => {
-  res.send("Running authentication successfully");
-  res.status(200);
-  console.log("authentication");
+  const hashpassword = await bcrypt.hash(password, 10);
+  const newUser = new USER({
+    username,
+    email,
+    password: hashpassword,
+  });
+
+  await newUser.save();
+  return res.json({ status: true, message: "user already exist" });
 });
+
+// signin
+
 
 export default userRouter;
