@@ -25,17 +25,17 @@ userRouter.post("/signup", async (req, res) => {
 });
 
 // signin
-userRouter.post("signin", async (req, res)=>{
-  const {email, password} = req.body;
-  const user = await USER.findOne({email});
-  if(!user){
-    return res.json({message : "user does not registered"});
+userRouter.post("signin", async (req, res) => {
+  const { email, password } = req.body;
+  const user = await USER.findOne({ email });
+  if (!user) {
+    return res.json({ message: "user does not registered" });
   }
 
   const validPassword = await bcrypt.compare(password, user.password);
 
-  if(!validPassword){
-    return res.json({message : "password does not match"});
+  if (!validPassword) {
+    return res.json({ message: "password does not match" });
   }
 
   const token = jwt.sign({ username: user.username }, process.env.KEY, {
@@ -50,6 +50,6 @@ userRouter.post("signin", async (req, res)=>{
   });
 
   return res.json({ status: true, message: "Login successful" });
-})
+});
 
 export default userRouter;
